@@ -7,7 +7,7 @@ string? inputLine2 = Console.ReadLine();
 //null safety check                                              
 if(inputLine1!=null && inputLine2!=null)                                               
 {
-    //convert string into integer
+    //convert string into ineger
     int number1 = int.Parse(inputLine1);
     int number2 = int.Parse(inputLine2);
     //check if first number is greater than second
