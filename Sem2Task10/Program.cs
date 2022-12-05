@@ -2,7 +2,7 @@
 // read number string & convert to integer & null safety check
 int numberN = int.Parse(Console.ReadLine()??"0");
 //create variable to store result
-int result = new();
+int result;
 //check if read number consists of three digits
 if(numberN>99 && numberN<1000)
 {
