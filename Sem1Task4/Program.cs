@@ -15,7 +15,7 @@ if(inputLine1!=null && inputLine2!=null && inputLine3!=null)
     int Number2 = int.Parse(inputLine2);
     int Number3 = int.Parse(inputLine3);
     //create variable which will store maximum value
-    int max = new();
+    int max;
     //check if first umber is greater than second
     if(Number1 > Number2)
     {
