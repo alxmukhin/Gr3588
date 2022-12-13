@@ -3,7 +3,7 @@ int number = ReadData("Введите пятизначное число:");
 //using methods PrintData tou output palindrome test result and method PalindromeTest in order to define if inserted value is palindrome or isn't
 PrintData(number, PalindromeTest(number));
 
-//ReadData method which will print input data request message & it's output is value inserted by the user
+//ReadData method which will print input data request message & its output is integer value inserted by the user
 int ReadData(string message)
 {
     //output request data message
@@ -12,7 +12,7 @@ int ReadData(string message)
     return int.Parse(Console.ReadLine() ?? "0");
 }
 
-//PalindroromeTest method performs if inserted value is palindrome or isn't, it's output is logical value 
+//PalindroromeTest method performs if inserted value is palindrome or isn't, its output is logical value 
 bool PalindromeTest (int number)
 {
     //create logical variable which will store test result
