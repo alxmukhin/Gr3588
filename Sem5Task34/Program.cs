@@ -1,68 +1,97 @@
-﻿int number = ReadData("Введите число элементов массива:");
+﻿//Collect number ofelements in array
+int number = ReadData("Введите число элементов массива:");
+//generate new array
 int[] arrayInitial = GenerateArray(number);
-PrintArray("В массиве:", arrayInitial);
-PrintResultEven("Количество чётных элементов в данном массиве равно: ", EvenTestCount(arrayInitial));
+//print array
+PrintArray("В заданном массиве:", arrayInitial);
+//count number of even elements in array and output
+PrintResultEvenCount("Количество четных элементов массива равно: ", EvenCount(arrayInitial));
+// apply bubble sort
 int[] arraySorted = BubbleSort(arrayInitial);
-PrintArray ("Массив отсортированный по возрастанию элементов:", arraySorted);
+// print sorted array
+PrintArray("Массив отсортированный по возрастанию:", arrayInitial);
 
+//ReadData method - input number of elements
 int ReadData(string message)
 {
     Console.WriteLine(message);
     return int.Parse(Console.ReadLine() ?? "0");
 }
 
+//GenerateArray method generates array of random integer between 100 and 999, based on inserted number of lements 
 int[] GenerateArray(int length)
 {
-    int[] outArray = new int[length];
+    //create new array
+    int[] array = new int[length];
+    //fill in array with random values based on conditions
     for (int i = 0; i < length; i++)
     {
         Random rnd = new Random();
-        int randnum = rnd.Next(100, 1000);
-        outArray[i] = randnum;
+        array[i] = rnd.Next(100, 1000);
     }
-    return outArray;
+    return array;
 }
 
-int EvenTestCount(int[] array)
+//EvenCount method counts number of even array elements
+int EvenCount(int[] array)
 {
-    int counter = 0;
+    //define counter initial value
+    int count = 0;
+    //start counting
     for (int i = 0; i < array.Length; i++)
     {
-        if (array[i]%2 == 0) counter = counter + 1;
+        //condition for counter
+        if(array[i]%2 == 0) 
+        {
+            count = count + 1;
+        }
     }
-    return counter;
+    return count;
 }
 
-int[] BubbleSort (int[] array)
+//BubleSort method sorts array from min to max, defining max element in each cycle
+int[] BubbleSort(int[] array)
 {
-    for (int i = 0; i < (array.Length - 1); i++)
+    //start cycle
+    for (int i = 0; i < array.Length - 1; i++)
     {
+        //reduce array by one element when max is found
         for (int j = 0; j < array.Length - i - 1; j++)
         {
-            if (array[j] > array[j+1])
             {
-                int temp = array[j+1];
-                array[j+1] = array[j];
-                array[j] = temp;
+                //condition of defining max element
+                if (array[j] > array[j+1])
+                {
+                    int temp = array[j+1];
+                    array[j+1] = array[j];
+                    array[j] = temp;
+                }
             }
         }
     }
     return array;
 }
 
+//PrintArray method used to represent array as a string
 void PrintArray(string message, int[] array)
 {
+    //define number of elements in array
     int length = array.Length;
+    //create new string
     string arrayLine = string.Empty;
+    //build string by adding array element on each step
     for (int i = 0; i < length; i++)
     {
         arrayLine = arrayLine + array[i] + " ";
     }
+    //output string
     Console.WriteLine(message);
+    //output string containing array
     Console.WriteLine(arrayLine);
 }
 
-void PrintResultEven(string message, int number)
+//PrintResultEvenCount used for outpiut result for number of even elements
+void PrintResultEvenCount(string message, int count)
 {
-    Console.WriteLine(message + number);
+    Console.WriteLine(message + count);
 }
