@@ -41,19 +41,19 @@ int ElementSearch(int[,] array, int rowNumber, int columnNumber)
 
 void PrintArray(int[,] array)
 {
-    ConsoleColor[] col = new ConsoleColor[]{ConsoleColor.Black,ConsoleColor.Blue,ConsoleColor.Cyan,
-                                        ConsoleColor.DarkBlue,ConsoleColor.DarkCyan,ConsoleColor.DarkGray,
-                                        ConsoleColor.DarkGreen,ConsoleColor.DarkMagenta,ConsoleColor.DarkRed,
-                                        ConsoleColor.DarkYellow,ConsoleColor.Gray,ConsoleColor.Green,
-                                        ConsoleColor.Magenta,ConsoleColor.Red,ConsoleColor.White,
-                                        ConsoleColor.Yellow};
+    // ConsoleColor[] col = new ConsoleColor[]{ConsoleColor.Black,ConsoleColor.Blue,ConsoleColor.Cyan,
+    //                                     ConsoleColor.DarkBlue,ConsoleColor.DarkCyan,ConsoleColor.DarkGray,
+    //                                     ConsoleColor.DarkGreen,ConsoleColor.DarkMagenta,ConsoleColor.DarkRed,
+    //                                     ConsoleColor.DarkYellow,ConsoleColor.Gray,ConsoleColor.Green,
+    //                                     ConsoleColor.Magenta,ConsoleColor.Red,ConsoleColor.White,
+    //                                     ConsoleColor.Yellow};
     for(int i = 0; i < array.GetLength(0); i++)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-            Console.ForegroundColor = col[new System.Random().Next(0, 16)];
+            //Console.ForegroundColor = col[new System.Random().Next(0, 16)];
             Console.Write("{0}  ", array[i, j]);
-            Console.ResetColor();
+            //Console.ResetColor();
         }
         Console.WriteLine();
     }
