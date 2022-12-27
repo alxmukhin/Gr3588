@@ -3,6 +3,7 @@ int columns = ReadData("Введите число столбцов: ");
 int[,] array = FillArrayRandom(rows, columns);
 PrintArray(array);
 PrintMeans(CalculateMean(array));
+PrintArrayDiagonal(array, CalculateMeanDiagonal(array));
 
 int ReadData(string message)
 {
@@ -41,23 +42,67 @@ double[] CalculateMean(int[,] array)
     return means;
 }
 
+
+double CalculateMeanDiagonal(int[,] array)
+{
+    double diagonalMean = 0;
+    double diagonalSum = 0;
+    if(array.GetLength(0) == array.GetLength(1))
+    {
+        for(int i = 0; i < array.GetLength(0); i++)
+        {
+            diagonalSum = diagonalSum + array[i, i];
+        }
+        diagonalMean = diagonalSum / array.GetLength(0);
+    }
+    else
+    {
+        diagonalMean = 0;
+    }
+    return diagonalMean;
+}
+
 void PrintArray(int[,] array)
 {
-    // ConsoleColor[] col = new ConsoleColor[]{ConsoleColor.Black,ConsoleColor.Blue,ConsoleColor.Cyan,
-    //                                     ConsoleColor.DarkBlue,ConsoleColor.DarkCyan,ConsoleColor.DarkGray,
-    //                                     ConsoleColor.DarkGreen,ConsoleColor.DarkMagenta,ConsoleColor.DarkRed,
-    //                                     ConsoleColor.DarkYellow,ConsoleColor.Gray,ConsoleColor.Green,
-    //                                     ConsoleColor.Magenta,ConsoleColor.Red,ConsoleColor.White,
-    //                                     ConsoleColor.Yellow};
     for(int i = 0; i < array.GetLength(0); i++)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-            //Console.ForegroundColor = col[new System.Random().Next(0, 16)];
             Console.Write("  {0}   ", array[i, j]);
-            //Console.ResetColor();
         }
         Console.WriteLine();
+    }
+}
+
+void PrintArrayDiagonal(int[,] array, double diagonalMean)
+{
+    if(diagonalMean == 0)
+    {
+        Console.WriteLine("Матрица не является квадратной, нельзя посчитать среднее арифимитическое элементов на диагонали!");
+    }
+    else
+    {
+        Console.WriteLine("Среднее арифметическое элементов матрицы по диагонали равно:" + " {0:N2}",diagonalMean);
+        for(int i = 0; i < array.GetLength(0); i++)
+        {
+            for(int j = 0; j < array.GetLength(1); j++)
+            {
+                if(i==j)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("  {0}   ", array[i, j]);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write("  {0}   ", array[i, j]);
+                    Console.ResetColor();
+
+                }
+            }
+            Console.WriteLine();
+        }
     }
 }
 
@@ -68,4 +113,5 @@ void PrintMeans(double[] means)
     {
         Console.Write(" {0:N2} ", means[i]);
     }
+    Console.WriteLine();
 }
