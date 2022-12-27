@@ -1,10 +1,12 @@
 ﻿int rows = ReadData("Введите число строк: ");
 int columns = ReadData("Введите число столбцов: ");
-int[,] array = FillArrayRandom(rows, columns);
-PrintArray(array);
+//int[,] array = FillArrayRandom(rows, columns);
+int[,] array = FillArrayFibonacci(rows, columns);
+//PrintArray(array);
 int rowNumber = ReadData("Введите номер строки искомого элемента: ");
 int columnNumber = ReadData("Введите номер столбца искомого элемента: ");
 PrintSearchResult(ElementSearch(array, rowNumber, columnNumber));
+PrintArrayFibonacci(array, rowNumber, columnNumber);
 
 int ReadData(string message)
 {
@@ -12,14 +14,38 @@ int ReadData(string message)
     return int.Parse(Console.ReadLine() ?? "0");
 }
 
-int[,] FillArrayRandom(int rows, int columns)
+// int[,] FillArrayRandom(int rows, int columns)
+// {
+//     int[,] array = new int[rows, columns];
+//     for(int i = 0; i < rows; i++)
+//     {
+//         for(int j = 0; j < columns; j++)
+//         {
+//             array[i, j] = new System.Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+int[,] FillArrayFibonacci(int rows, int columns)
 {
-    int[,] array = new int[rows, columns];
+    int number = rows * columns;
+    int[] numbersFibonacci = new int[number];
+    numbersFibonacci[0] = 0;
+    numbersFibonacci[1] = 1;
+    for(int k = 2; k < number; k++)
+    {
+       numbersFibonacci[k] = numbersFibonacci[k-2] + numbersFibonacci[k-1];
+    }
+    
+    int[,] array = new int[rows, columns]; 
+    int n = 0;
     for(int i = 0; i < rows; i++)
     {
         for(int j = 0; j < columns; j++)
         {
-            array[i, j] = new System.Random().Next(1, 10);
+            array[i,j] = numbersFibonacci[n];
+            n++;
         }
     }
     return array;
@@ -39,21 +65,36 @@ int ElementSearch(int[,] array, int rowNumber, int columnNumber)
     return result;
 }
 
-void PrintArray(int[,] array)
+// void PrintArray(int[,] array)
+// {
+//     for(int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for(int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write("{0}  ", array[i, j]);
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+void PrintArrayFibonacci(int[,] array, int rowNumber, int columnNumber)
 {
-    // ConsoleColor[] col = new ConsoleColor[]{ConsoleColor.Black,ConsoleColor.Blue,ConsoleColor.Cyan,
-    //                                     ConsoleColor.DarkBlue,ConsoleColor.DarkCyan,ConsoleColor.DarkGray,
-    //                                     ConsoleColor.DarkGreen,ConsoleColor.DarkMagenta,ConsoleColor.DarkRed,
-    //                                     ConsoleColor.DarkYellow,ConsoleColor.Gray,ConsoleColor.Green,
-    //                                     ConsoleColor.Magenta,ConsoleColor.Red,ConsoleColor.White,
-    //                                     ConsoleColor.Yellow};
     for(int i = 0; i < array.GetLength(0); i++)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-            //Console.ForegroundColor = col[new System.Random().Next(0, 16)];
-            Console.Write("{0}  ", array[i, j]);
-            //Console.ResetColor();
+            if(i == rowNumber - 1 && j == columnNumber - 1)
+            {  
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("{0}  ", array[i, j]);
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("{0}  ", array[i, j]);
+                Console.ResetColor();
+            }
         }
         Console.WriteLine();
     }
