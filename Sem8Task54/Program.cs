@@ -48,10 +48,13 @@ void PrintArray(string message, int[,] array)
     }
 }
 
+//SortArrayDecrease method decrerase sorting elements in a row
 int[,] SortArrayDecrease(int[,] array)
 {
+    //switch from row to row
     for(int i = 0; i < array.GetLength(0); i++ )
     {
+        //decrease sort cycle in a row
         for(int j = 0; j < array.GetLength(1) - 1; j++)
         {
             for(int k = 0; k < array.GetLength(1) - j - 1; k++)
