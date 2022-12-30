@@ -46,7 +46,7 @@ int[,,] Fill3DArray(int x, int y, int z)
     return array3D;
 }
 
-//Print3DArray method print 3D array with element 
+//Print3DArray method print 3D array with element coordinates
 void Print3DArray(int[,,] array3D)
 {
      for(int i = 0; i < x; i++)
