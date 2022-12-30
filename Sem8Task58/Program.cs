@@ -22,6 +22,7 @@ if(columnsMatrix1 == rowsMatrix2)
 }
 else
 {
+    //notification that multiplication is not possible
     Console.WriteLine("Матрицы несогласованы, число столбцов первой не равно числу строк второй, невозможно вычислить их произведение!");
 }
 
@@ -65,13 +66,17 @@ void PrintArray(string message, int[,] array)
     }
 }
 
+//MatrixMultiplication method perform multipliacation of two matrixes
 int[,] MatrixMultiplication(int[,] matrix1, int[,] matrix2)
 {
+    //create new matrix to store results of multiplication
     int[,] matrix12 = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
+    //cycle of matrixes multiplication as per formula
     for(int i = 0; i < matrix1.GetLength(0); i++)
     {
         for(int j = 0; j < matrix2.GetLength(1); j++)
         {
+                //create temporary variable to store result of new matrix element calculation
                 int sum = 0;
                 for(int k = 0; k < matrix1.GetLength(1); k++)
                 {
