@@ -24,11 +24,11 @@ int[,] SpiralFill()
     {
         spiralArray[1, m+1] = spiralArray[1, m] + 1;
     }
-       for(int n = 1; n < 3; n++)
+       for(int n = 1; n < 2; n++)
     {
         spiralArray[n+1, 2] = spiralArray[n,2] + 1;
     }
-      for(int o = 3; o > 0; o--)
+      for(int o = 2; o > 1; o--)
     {
         spiralArray[2, o-1] = spiralArray[2, o] + 1;
     }
@@ -42,7 +42,7 @@ void PrintArray(int[,] array)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write("{0} ", array[i, j]);
+            Console.Write(" {00} ", array[i, j]);
         }
         Console.WriteLine();
     }
