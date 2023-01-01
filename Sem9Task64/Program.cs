@@ -1,4 +1,4 @@
-﻿//get value of N
+﻿//get value of number N
 int number = ReadData("Введите число N:");
 //create string of values from N to 1 and print it
 PrintResult("Последовательность натуральных чисел от N до 1: ", RecursionDecrease(number));
